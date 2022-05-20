@@ -1,0 +1,24 @@
+{
+  "revision": "854945118",
+  "tid": "048d1a3a-a007-11e8-a249-b9bc3181aba8",
+  "items": [{
+    "title": "File:BarackObamaportrait.jpg",
+    "section_id": 11,
+    "type": "image",
+    "caption": {
+      "html": "The official portrait of Obama as a member of the United States Senate",
+      "text": "The official portrait of Obama as a member of the United States Senate"
+    },
+    "showInGallery": true
+  },
+  {
+    "title": "File:20090124_WeeklyAddress.ogv",
+    "section_id": 22,
+    "type": "video",
+    "caption": {
+      "html": "Obama presents his first <a rel=\"mw:WikiLink/Interwiki\" href=\"https://commons.wikimedia.org/wiki/Obama%20Administration%20weekly%20video%20addresses\" title=\"commons:Obama Administration weekly video addresses\" id=\"mwBJk\">weekly address</a> as President of the United States on January 24, 2009, discussing the <a rel=\"mw:WikiLink\" href=\"./American_Recovery_and_Reinvestment_Act_of_2009\" title=\"American Recovery and Reinvestment Act of 2009\" id=\"mwBJo\">American Recovery and Reinvestment Act of 2009</a>",
+      "text": "Obama presents his first weekly address as President of the United States on January 24, 2009, discussing the American Recovery and Reinvestment Act of 2009"
+    },
+    "showInGallery": true
+  }]
+}

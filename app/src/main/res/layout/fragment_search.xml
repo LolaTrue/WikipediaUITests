@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:visibility="visible">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/paper_color"
+        android:elevation="6dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/search_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            android:transitionName="@string/transition_search_bar"
+            app:navigationIcon="@drawable/ic_arrow_back_themed_24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
+
+                <org.wikipedia.views.CabSearchView
+                    android:id="@+id/search_cab_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="-16dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:focusable="true"
+                    android:imeOptions="actionGo|flagNoExtractUi"
+                    android:inputType="text"
+                    app:defaultQueryHint="@string/search_hint" />
+
+                <FrameLayout
+                    android:id="@+id/search_lang_button_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="?attr/actionBarItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="@string/preference_title_language"
+                    android:paddingStart="9dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="9dp"
+                    android:paddingBottom="2dp">
+
+                    <TextView
+                        android:id="@+id/search_lang_button"
+                        style="@style/TextViewCentered"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/lang_button_shape"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@android:color/white" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ProgressBar
+            android:id="@+id/search_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6.5dp"
+            android:indeterminate="true"
+            android:indeterminateTint="?attr/colorAccent"
+            android:progressBackgroundTint="@color/accent30"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/search_language_scroll_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/paper_color"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/material_theme_border_color" />
+
+        <org.wikipedia.views.LanguageScrollView
+            android:id="@+id/search_language_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_search_results"
+            android:name="org.wikipedia.search.SearchResultsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_search_results" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/search_panel_recent"
+            android:name="org.wikipedia.search.RecentSearchesFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_search_recent" />
+
+    </FrameLayout>
+</LinearLayout>

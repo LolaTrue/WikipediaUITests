@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/base_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="27dp"
+    android:background="?attr/chip_background_color"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:background="?attr/paper_color"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingEnd="3dp"
+        android:paddingBottom="24dp"
+        android:paddingTop="8dp">
+
+        <include
+            android:id="@+id/otdEventLayout"
+            layout="@layout/view_on_this_day_event" />
+    </FrameLayout>
+</LinearLayout>

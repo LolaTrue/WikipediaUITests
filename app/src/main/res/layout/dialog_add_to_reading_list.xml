@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/list_item_horizontal_padding"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/list_item_horizontal_padding"
+            android:paddingBottom="8dp"
+            android:text="@string/reading_list_save_to"
+            android:textColor="?attr/primary_text_color"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/material_theme_border_color" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56.5dp">
+
+        <LinearLayout
+            android:id="@+id/lists_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/create_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="@dimen/list_item_horizontal_padding"
+                android:paddingTop="16dp"
+                android:paddingEnd="@dimen/list_item_horizontal_padding"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:layout_width="@dimen/readingListItemSize"
+                    android:layout_height="@dimen/readingListItemSize"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_shape_add_reading_list"
+                    android:contentDescription="@null"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_add_gray_white_24dp"
+                    app:tint="@color/base30" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/reading_list_create_new"
+                    android:textColor="?attr/primary_text_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_of_lists"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

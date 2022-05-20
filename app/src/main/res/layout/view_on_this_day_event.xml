@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/paper_color"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/year_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-13.5dp"
+        android:background="@android:color/transparent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="?attr/paper_color"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <ImageView
+                android:id="@+id/radio_image_view"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/otd_radio"
+                app:tint="?attr/colorAccent" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8sp"
+            android:textColor="?attr/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="1894" />
+    </LinearLayout>
+
+    <org.wikipedia.views.AppTextView
+        android:id="@+id/years_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="2dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="?attr/primary_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <org.wikipedia.views.AppTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="2dp"
+        android:lineSpacingExtra="8sp"
+        android:textColor="?attr/primary_text_color"
+        android:textSize="16sp"
+        tools:text="Thomas Edison films American sharpshooter Annie Oakley, which is instrumental in her hiring by Buffalo Bill for his Wild West Show." />
+
+    <include
+        android:id="@+id/page"
+        layout="@layout/item_on_this_day_pages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:visibility="gone" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pages_pager"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/pages_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-16dp"
+        android:background="@android:color/transparent"
+        app:tabBackground="@drawable/shape_tab_dot"
+        app:tabGravity="center"
+        app:tabIndicator="@null"
+        app:tabPaddingEnd="8dp"
+        app:tabPaddingStart="8dp"
+        app:tabRippleColor="?attr/color_group_59"/>
+</LinearLayout>

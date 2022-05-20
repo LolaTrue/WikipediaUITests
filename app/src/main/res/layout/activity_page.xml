@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.FixedDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="end"
+    tools:context=".page.PageActivity">
+
+    <org.wikipedia.views.FrameLayoutNavMenuTriggerer
+        android:id="@+id/container_with_nav_trigger"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/page_fragment"
+            android:name="org.wikipedia.page.PageFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_page" />
+
+        <FrameLayout
+            android:id="@+id/page_toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/paper_color"
+            android:elevation="4dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/page_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/PageToolbarTheme"
+                app:contentInsetStartWithNavigation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|end">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/page_toolbar_button_search"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="@string/search_hint"
+                        android:textColor="?attr/material_theme_secondary_color"
+                        android:background="@drawable/shape_search_box"
+                        android:drawablePadding="8dp"
+                        android:paddingStart="12dp"
+                        android:layout_marginEnd="4dp"
+                        app:drawableTint="?attr/toolbar_icon_color"
+                        app:drawableStartCompat="@drawable/ic_search_themed_24dp"/>
+
+                    <org.wikipedia.views.TabCountsView
+                        android:id="@+id/page_toolbar_button_tabs"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/menu_page_show_tabs" />
+
+                    <org.wikipedia.views.NotificationButtonView
+                        android:id="@+id/page_toolbar_button_notifications"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/notifications_activity_title"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/page_toolbar_button_show_overflow_menu"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/menu_feed_overflow_label"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/ic_more_vert_themed_24dp"
+                        app:tint="?attr/toolbar_icon_color" />
+
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <ProgressBar
+                android:id="@+id/page_progress_bar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="-7dp"
+                android:indeterminate="true" />
+
+        </FrameLayout>
+
+        <org.wikipedia.views.WikiArticleCardView
+            android:id="@+id/wiki_article_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"/>
+
+    </org.wikipedia.views.FrameLayoutNavMenuTriggerer>
+
+    <FrameLayout
+        android:id="@+id/side_panel_container"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="?attr/paper_color"
+        tools:visibility="visible">
+
+        <!-- ToC -->
+        <FrameLayout
+            android:id="@+id/toc_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <org.wikipedia.views.SwipeableListView
+                android:id="@+id/toc_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:listSelector="?android:attr/selectableItemBackground"
+                android:paddingTop="64dp"
+                android:paddingBottom="64dp"
+                android:scrollbars="none" />
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginTop="-4dp"
+                android:layout_marginEnd="-2dp"
+                android:layout_marginBottom="-4dp"
+                android:contentDescription="@null"
+                android:layerType="software"
+                android:src="@drawable/toc_dotted_line" />
+
+            <org.wikipedia.views.PageScrollerView
+                android:id="@+id/page_scroller_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end"
+                android:background="@drawable/shape_circle"
+                android:clickable="true"
+                android:elevation="8dp"
+                android:focusable="true"
+                android:scaleType="center"
+                app:backgroundTint="?attr/toc_scroller_button_color"
+                app:srcCompat="@drawable/ic_unfold_more_black_24dp"
+                app:tint="?attr/colorAccent" />
+
+        </FrameLayout>
+
+        <!-- Talk page -->
+        <FrameLayout
+            android:id="@+id/talk_topics_container"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            tools:visibility="visible"
+            android:visibility="gone">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="?attr/actionBarSize"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/talk_title_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="?colorAccent"
+                            android:textSize="20sp"
+                            android:lineSpacingExtra="5sp"
+                            android:textStyle="bold"
+                            android:background="?android:selectableItemBackground"
+                            android:paddingStart="16dp"
+                            android:paddingVertical="14dp"/>
+
+                        <ImageView
+                            android:id="@+id/talk_fullscreen_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="@null"
+                            android:padding="12dp"
+                            android:background="?android:selectableItemBackgroundBorderless"
+                            app:srcCompat="@drawable/ic_baseline_fullscreen_24"
+                            app:tint="?attr/colorAccent"/>
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/talk_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/talk_empty_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ic_user_talk"
+                    app:tint="?attr/material_theme_de_emphasised_color"/>
+
+                <TextView
+                    style="@style/MaterialMediumSecondaryCaption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/talk_page_empty" />
+
+            </LinearLayout>
+
+            <org.wikipedia.views.WikiErrorView
+                android:id="@+id/talk_error_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical" />
+
+            <ProgressBar
+                android:id="@+id/talk_progress_bar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="-7dp"
+                android:indeterminate="true" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/talk_last_modified"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:background="?attr/color_group_22"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:textColor="?android:attr/textColorPrimary"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:drawablePadding="12dp"
+                android:textSize="12sp"
+                android:gravity="center_vertical"
+                android:layout_gravity="bottom"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_history_24"
+                app:drawableTint="?android:attr/textColorTertiary"/>
+
+        </FrameLayout>
+    </FrameLayout>
+
+</androidx.drawerlayout.widget.FixedDrawerLayout>

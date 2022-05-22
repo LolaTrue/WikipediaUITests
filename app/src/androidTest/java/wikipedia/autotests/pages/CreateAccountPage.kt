@@ -2,10 +2,10 @@ package wikipedia.autotests.pages
 
 import android.graphics.Color
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import io.qameta.allure.android.allureScreenshot
 import io.qameta.allure.kotlin.Allure.step
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.instanceOf
@@ -32,9 +32,10 @@ class CreateAccountPage : BasePage() {
     fun typePassword(password: String) =
         step("Заполняем поле \"Пароль\"") {
             fillTextField(passwordHint, password)
+            allureScreenshot("ss_step_typePassword", 90, 1.0f)
         }
 
-    fun pressEye(): ViewInteraction =
+    fun pressEye() =
         step("Нажимаем иконку \"глазик\"") {
             onView(
                 allOf(
@@ -51,9 +52,10 @@ class CreateAccountPage : BasePage() {
                 )
             )
                 .perform(click())
+            allureScreenshot("ss_step_pressEye", 90, 1.0f)
         }
 
-    fun checkPassword(password: String): ViewInteraction =
+    fun checkPassword(password: String) =
         step("Проверяем, что отображается введенный пароль") {
             onView(
                 allOf(
@@ -62,42 +64,50 @@ class CreateAccountPage : BasePage() {
                 )
             )
                 .check(matches(withText(password)))
+            allureScreenshot("ss_step_checkPassword", 90, 1.0f)
         }
 
     fun typeUsername(username: String) =
         step("Заполняем поле \"Имя участника\"") {
             fillTextField(usernameHint, username)
+            allureScreenshot("ss_step_typeUsername", 90, 1.0f)
         }
 
     fun typeRepeatPassword(password: String) =
         step("Заполняем поле \"Повторите пароль\"") {
             fillTextField(repeatPasswordHint, password)
+            allureScreenshot("ss_step_typeRepeatPassword", 90, 1.0f)
         }
 
     fun typeEmail(email: String) =
         step("Заполняем поле \"Адрес электронной почты\"") {
             fillTextField(emailHint, email)
+            allureScreenshot("ss_step_typeEmail", 90, 1.0f)
         }
 
     fun pressSubmit() =
         step("Нажимаем на кнопку \"Далее\"") {
             clickById(submitButtonId)
+            allureScreenshot("ss_step_pressSubmit", 90, 1.0f)
         }
 
-    fun checkErrorMessage(): ViewInteraction =
+    fun checkErrorMessage() =
         step("Проверяем, что появилось сообщение об ошибке: \"Пароль должен состоять не менее чем из 8 символов\"") {
             onView(withId(errorMessageId))
                 .check(matches(withText("Пароль должен состоять не менее чем из 8 символов.")))
+            allureScreenshot("ss_step_checkErrorMessage", 90, 1.0f)
         }
 
     fun checkErrorMessageColor() =
         step("Проверяем, что у сообщения об ошибке краснй цвет") {
             assertEquals(redColor, getTextColor(withId(errorMessageId)))
+            allureScreenshot("ss_step_checkErrorMessageColor", 90, 1.0f)
         }
 
     fun checkPasswordHeaderColor() =
         step("Проверяем, что у заголовка \"Пароль\" красный цвет") {
             assertEquals(redColor, getTopHintColor(withId(createAccountPasswordInputId)))
+            allureScreenshot("ss_step_checkPasswordHeaderColor", 90, 1.0f)
         }
 
     companion object {

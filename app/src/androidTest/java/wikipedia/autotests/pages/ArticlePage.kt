@@ -1,12 +1,12 @@
 package wikipedia.autotests.pages
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
+import io.qameta.allure.android.allureScreenshot
 import io.qameta.allure.kotlin.Allure.step
 import org.wikipedia.R
 import wikipedia.autotests.elements.Elements.clickById
@@ -21,17 +21,20 @@ class ArticlePage : BasePage() {
     fun pressSave() =
         step("Нажимаем на иконку \"Сохранить\"") {
             clickByText(saveButton)
+            allureScreenshot("ss_step_pressSave", 90, 1.0f)
         }
 
     fun addToList() =
         step("Нажимаем в диалоговом окне \"добавить в список\"") {
             clickById(snackbarAction)
+            allureScreenshot("ss_step_addToList", 90, 1.0f)
         }
 
-    fun createList(listName: String): ViewInteraction =
+    fun createList(listName: String) =
         step("Вводим название списка") {
             onView(withId(textInput))
                 .perform(replaceText(listName))
+            allureScreenshot("ss_step_createList", 90, 1.0f)
         }
 
     fun pressOk() {

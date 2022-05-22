@@ -1,6 +1,6 @@
 package wikipedia.autotests.tests
 
-import android.autotests.pages.MainPage
+import wikipedia.autotests.pages.MainPage
 import androidx.test.espresso.intent.Intents
 import io.qameta.allure.android.runners.AllureAndroidJUnit4
 import io.qameta.allure.kotlin.junit4.DisplayName
@@ -21,41 +21,6 @@ class Tests : TestBase() {
             pressDonate()
             checkRedirect()
             Intents.release()
-        }
-    }
-
-    @Test
-    @DisplayName("Проверка настройки ленты по умолчанию")
-    fun testFeedDefaultSettings() {
-        MainPage {
-            pressMore()
-            pressSettings()
-        }
-        SettingsPage {
-            pressExploreFeed()
-        }
-        FeedSettingsPage {
-            for (position in 0..7) {
-                scroll(position)
-                checkSwitch(position)
-            }
-        }
-    }
-
-    @Test
-    @DisplayName("Проверка блоков на экране \"О приложении\"")
-    fun testCheckAboutWikipedia() {
-        MainPage {
-            pressMore()
-            pressSettings()
-        }
-        SettingsPage {
-            swipeViewUp()
-            waitForView()
-            pressAboutWikipedia()
-        }
-        AboutWikipediaPage {
-            checkBlocks()
         }
     }
 

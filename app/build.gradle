@@ -268,7 +268,7 @@ dependencies {
     androidTestImplementation "io.qameta.allure:allure-kotlin-junit4:2.4.0"
     androidTestImplementation "io.qameta.allure:allure-kotlin-android:2.4.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.3.0"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-web:$espressoVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

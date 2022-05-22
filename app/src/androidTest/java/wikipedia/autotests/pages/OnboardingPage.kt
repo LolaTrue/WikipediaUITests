@@ -1,5 +1,6 @@
 package wikipedia.autotests.pages
 
+import io.qameta.allure.android.allureScreenshot
 import io.qameta.allure.kotlin.Allure.step
 import org.wikipedia.R
 import wikipedia.autotests.elements.Elements.clickById
@@ -9,6 +10,7 @@ class OnboardingPage {
 
     fun skipPresentation() = step("Пропускаем презентацию") {
         clickById(skipButton)
+        allureScreenshot("ss_step_skipPresentation", 90, 1.0f)
     }
 
     companion object {

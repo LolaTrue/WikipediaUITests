@@ -3,6 +3,7 @@ package wikipedia.autotests.tests
 import android.content.Intent
 import android.text.method.PasswordTransformationMethod
 import androidx.test.rule.ActivityTestRule
+import io.qameta.allure.android.rules.ScreenshotRule
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -15,6 +16,10 @@ open class TestBase {
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
 
+    @get:Rule
+    val screenshotRule =
+        ScreenshotRule(mode = ScreenshotRule.Mode.END, screenshotName = "ss_wikipedia_ui_test")
+
     @Before
     fun before() {
         setup()
@@ -23,6 +28,7 @@ open class TestBase {
 
     @After
     fun tearDown() {
+        activityRule.finishActivity()
     }
 
     private fun setup() {
@@ -43,7 +49,8 @@ open class TestBase {
         const val PASSWORD = "password"
         const val PWD = "pwd"
         const val EMAIL = "test@test.com"
-        val PASSWORD_TRANSFORMED = PasswordTransformationMethod().getTransformation(PASSWORD, null).toString()
+        val PASSWORD_TRANSFORMED =
+            PasswordTransformationMethod().getTransformation(PASSWORD, null).toString()
         const val SEARCHTEXT = "Тинькофф премьер лига"
         const val LISTNAME = "Тинькофф"
     }

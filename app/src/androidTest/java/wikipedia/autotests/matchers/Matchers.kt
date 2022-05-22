@@ -1,5 +1,6 @@
 package wikipedia.autotests.matchers
 
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
@@ -9,7 +10,6 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import com.google.android.apps.common.testing.accessibility.framework.utils.contrast.Color
 import com.google.android.material.textfield.TextInputLayout
 import org.hamcrest.Description
 import org.hamcrest.Matcher

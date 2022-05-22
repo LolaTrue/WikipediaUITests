@@ -1,12 +1,12 @@
 package wikipedia.autotests.pages
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.google.android.material.textview.MaterialTextView
+import io.qameta.allure.android.allureScreenshot
 import io.qameta.allure.kotlin.Allure.step
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.instanceOf
@@ -18,7 +18,7 @@ class SavedArticlesPage : BasePage() {
     private val removeButtonId = R.id.reading_list_item_remove
     private val snackbarTextId = R.id.snackbar_text
 
-    fun pressList(listName: String): ViewInteraction =
+    fun pressList(listName: String) =
         step("Нажимаем на список $listName") {
             onView(
                 allOf(
@@ -27,29 +27,34 @@ class SavedArticlesPage : BasePage() {
                 )
             )
                 .perform(click())
+            allureScreenshot("ss_step_pressList", 90, 1.0f)
         }
 
-    fun checkArticleInList(): ViewInteraction =
+    fun checkArticleInList() =
         step("Проверяем, что название статьи отображается в списке") {
             onView(withId(articleTitleId))
                 .check(matches(isDisplayed()))
+            allureScreenshot("ss_step_checkArticleInList", 90, 1.0f)
         }
 
-    fun longPressArticle(): ViewInteraction =
+    fun longPressArticle() =
         step("Долгое нажатие на статью в списке") {
             onView(withId(articleTitleId))
                 .perform(longClick())
+            allureScreenshot("ss_step_longPressArticle", 90, 1.0f)
         }
 
     fun deleteArticleFromList() =
         step("Нажимаем на кнопку \"Удалить\"") {
             clickById(removeButtonId)
+            allureScreenshot("ss_step_deleteArticleFromList", 90, 1.0f)
         }
 
-    fun checkDeleteMessage(): ViewInteraction =
+    fun checkDeleteMessage() =
         step("Проверяем, что появляется уведомление о том, что список удален") {
             onView(withId(snackbarTextId))
                 .check(matches(isDisplayed()))
+            allureScreenshot("ss_step_checkDeleteMessage", 90, 1.0f)
         }
 
     companion object {

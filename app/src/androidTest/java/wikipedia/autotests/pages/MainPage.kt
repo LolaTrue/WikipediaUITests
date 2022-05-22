@@ -1,17 +1,17 @@
-package android.autotests.pages
+package wikipedia.autotests.pages
 
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
+import io.qameta.allure.android.allureScreenshot
 import io.qameta.allure.kotlin.Allure.step
 import org.wikipedia.BuildConfig
 import org.wikipedia.R
 import org.wikipedia.WikipediaApp
 import wikipedia.autotests.elements.Elements.clickByContentDescription
 import wikipedia.autotests.elements.Elements.clickById
-import wikipedia.autotests.pages.BasePage
 
 class MainPage : BasePage() {
     private val moreButton = R.id.nav_more_container
@@ -31,31 +31,38 @@ class MainPage : BasePage() {
 
     fun pressMore() = step("Нажимаем на кнопку \"Еще\"") {
         clickById(moreButton)
+        allureScreenshot("ss_step_pressMore", 90, 1.0f)
     }
 
     fun pressDonate() = step("Нажимаем на кнопку \"Пожертвовать\"") {
         clickById(donateButton)
+        allureScreenshot("ss_step_pressDonate", 90, 1.0f)
     }
 
     fun pressSettings() = step("Нажимаем на кнопку \"Настройки\"") {
         clickById(settingsButton)
+        allureScreenshot("ss_step_pressSettings", 90, 1.0f)
     }
 
     fun pressLogin() = step("Нажимаем на кнопку \"Войти в Википедию\"") {
         clickById(loginButton)
+        allureScreenshot("ss_step_pressLogin", 90, 1.0f)
     }
 
     fun pressSearch() = step("Нажимаем на поле поиска") {
         clickById(searchContainerId)
+        allureScreenshot("ss_step_pressSearch", 90, 1.0f)
     }
 
     fun pressSavedArticles() = step("Нажимаем кнопку \"Сохранено\"") {
         clickByContentDescription(savedButton)
+        allureScreenshot("ss_step_pressSavedArticles", 90, 1.0f)
     }
 
     fun checkRedirect() =
         step("Проверяем, что случился переход на окно выбора браузера для открытия") {
             intended(hasAction(chooserIntent.action))
+            allureScreenshot("ss_checkRedirect", 90, 1.0f)
         }
 
     companion object {
